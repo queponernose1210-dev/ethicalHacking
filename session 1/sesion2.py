@@ -11,7 +11,7 @@ def sumar(a,b):
     else:
         return print("La dividion de ",a," y ",b, " es " ,a/b)
 
-saludo2("Jordan")
+saludo2("Alan")
 
 sumar(3,0)
 

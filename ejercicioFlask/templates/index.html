@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Log</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Vulnerability Log</h1>
+
+        <div class="main-layout">
+            <!-- SECCIÓN IZQUIERDA: Formulario con POST -->
+            <div class="card form-card">
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" placeholder="e.g. SQL Injection in login" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">OWASP Category</label>
+                        <select id="category" name="category">
+                            <option value="A03 - Injection">A03 - Injection</option>
+                            <option value="A01 - Broken Access Control">A01 - Broken Access Control</option>
+                            <option value="A02 - Cryptographic Failures">A02 - Cryptographic Failures</option>
+                            <option value="A07 - Identification and Authentication Failures">A07 - Identification and Authentication Failures</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="severity">Severity</label>
+                        <select id="severity" name="severity">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Report vulnerability</button>
+                </form>
+            </div>
+
+            <!-- SECCIÓN DERECHA: Tabla dinámica con las vulnerabilidades -->
+            <div class="card table-card">
+                <h2>Reported vulnerabilities</h2>
+                <table class="vuln-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Severity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in vulnerabilities %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <!-- Jinja2 escapa HTML por defecto para prevenir ejecuciones no deseadas -->
+                            <td class="vuln-title"><code>{{ item.title }}</code></td>
+                            <td>
+                                <span class="severity-badge {{ item.severity.lower() }}">
+                                    {{ item.severity }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

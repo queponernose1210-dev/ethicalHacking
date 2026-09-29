@@ -1,0 +1,28 @@
+/* Configuración general limpia */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc !important; /* Fondo gris claro brillante */
+}
+
+/* Tarjeta contenedora */
+.card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    background-color: #ffffff !important; /* Fondo blanco para las tarjetas */
+}
+
+/* Títulos claros y legibles */
+h1 {
+    color: #0f172a !important; /* Texto azul oscuro / negro muy legible */
+    font-weight: 700 !important;
+}
+
+h1.text-primary {
+    color: #2563eb !important; /* Azul brillante para títulos principales */
+}
+
+/* Ajustes para el contenedor */
+main.container {
+    max-width: 800px;
+}
